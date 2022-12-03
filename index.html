@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Loja</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        width: 100%;
+    }
+    .produtos{
+        width: 90%;
+        display: flex;
+        margin: 2.5% auto;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    .carrinho{
+        height: 100vh;
+        position: fixed;
+        top: 10%;
+        left: 1%;
+        font-size: 1.25em;
+    }
+    .carrinho p{
+        margin-bottom: 25%;
+    }
+</style>
+<body>
+    <!-- <h2>Vitrine:</h2> -->
+    <div class="produtos"></div>
+    <!-- <h2>Carrinho:</h2> -->
+    <div class="carrinho"></div>
+
+    <script>
+        const produtosVenda = [
+        {
+            id: 0,
+            produto : "Camisa",
+            img: "./image.jpg",
+            quantidade: 0
+        },
+        {
+            id: 1,
+            produto : "Shorts",
+            img: "./image.jpg",
+            quantidade: 0
+        },
+        {
+            id: 2,
+            produto : "Blusa",
+            img: "./image.jpg",
+            quantidade: 0
+        },
+        {
+            id: 3,
+            produto : "Calça",
+            img: "./image.jpg",
+            quantidade: 0
+        },
+        {
+            id: 4,
+            produto : "Jeans",
+            img: "./image.jpg",
+            quantidade: 0
+        },
+    ];
+
+        vitrine = () => {
+            var mostraProdutos = document.querySelector('.produtos');
+            produtosVenda.map((val)=>{
+                mostraProdutos.innerHTML+='<div class="Pro-single"> <img src="' + val.img + '" /><h1>' + val.produto + '</h1><a key="' + val.id + '" href="#" >Adicionar ao carrinho</a></div>';
+            })
+        }
+        vitrine();
+
+        carrinho = () => {
+            var mostrarCarrinho = document.querySelector('.carrinho');
+            mostrarCarrinho.innerHTML="";
+            produtosVenda.map((vel)=>{
+                if(vel.quantidade > 0){
+                    mostrarCarrinho.innerHTML+='<p>' + vel.produto + ' | ' + vel.quantidade + '</p>';
+                };
+            });
+        }
+
+        var links = document.getElementsByTagName('a');
+
+        for(var i = 0; i < links.length; i++){
+            links[i].addEventListener("click", function(){
+                let key = this.getAttribute('key');
+                produtosVenda[key].quantidade++;
+                carrinho();
+                return false;
+            })
+        }
+
+    </script>
+</body>
+</html>
