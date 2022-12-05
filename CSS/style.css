@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+}
+.produtos{
+    width: 90%;
+    display: flex;
+    margin: 2.5% auto;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.carrinho{
+    height: 100vh;
+    position: fixed;
+    top: 10%;
+    left: 1%;
+    font-size: 1.25em;
+}
+.carrinho p{
+    margin-bottom: 25%;
+}
